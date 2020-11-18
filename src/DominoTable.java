@@ -8,7 +8,7 @@ public class DominoTable
 	int random_tile = random.nextInt(29);
 	int counter = 0;
 	public void initializeTiles()
-	{
+	{//
 		for (int i = 0; i < domino_tiles.length; i++ )
 		{
 			for ( int k = DominoTile.Min_Tile_Value ; k <= DominoTile.Max_Tile_Value; k++ )

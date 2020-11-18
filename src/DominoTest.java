@@ -11,8 +11,8 @@ public class DominoTest
 		System.out.println(Domino_plate_1.toString());
 		System.out.println(Domino_plate_1.equals(Domino_plate_2));
 		
-		//
-		DominoTable  tupGos = new DominoTable ();
+		//Тест на DominoTable
+		//DominoTable  tp = new DominoTable ();
 		
 	}
 
