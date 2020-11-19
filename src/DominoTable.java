@@ -7,6 +7,7 @@ public class DominoTable
 	Random random = new Random();
 	int random_tile = random.nextInt(29);
 	int counter = 0;
+	
 	public void initializeTiles()
 	{//
 		for (int i = 0; i < domino_tiles.length; i++ )
@@ -23,11 +24,23 @@ public class DominoTable
 	
 	public DominoTable()
 	{
+		int counter = Domino_Tile_Max_Counter;
 		this.initializeTiles();
 		domino_tiles[random_tile] = domino_tiles_table[0];
-		if (addLeft() == false)
+		while( counter > 0 )
 		{
-			addRight();	
+			if (addLeft() )
+			{	
+				counter--;
+				continue;
+			}
+			if (addRight() )
+			{	
+				counter--;
+				continue;
+			}
+			else 
+				break;
 		}
 		
 	}
@@ -35,9 +48,10 @@ public class DominoTable
 	
 	public boolean addLeft()
 	{
-		//ne e dovyrsheno
 		random_tile = random.nextInt(29);
-			if  ( domino_tiles_table[1].getLeftValue() == domino_tiles[random_tile].getLeftValue())
+		if (domino_tiles[random_tile].getIsCheck() == false)
+		{
+			if  ( domino_tiles_table[0].getLeftValue() == domino_tiles[random_tile].getLeftValue())
 			{
 				domino_tiles[random_tile].swapValues();
 				for (int i = 0; i < domino_tiles_table.length; i++) 
@@ -45,6 +59,8 @@ public class DominoTable
 					domino_tiles_table[i+1] = domino_tiles_table[i];
 				}
 				domino_tiles_table[0] = domino_tiles[random_tile]; 
+				domino_tiles[random_tile] = new DominoTile(domino_tiles[random_tile].getLeftValue(),
+						domino_tiles[random_tile].getRightValue(), true	);
 				counter++;
 				return true;
 			}
@@ -55,12 +71,15 @@ public class DominoTable
 					domino_tiles_table[i+1] = domino_tiles_table[i];
 				}
 				domino_tiles_table[0] = domino_tiles[random_tile];
+				domino_tiles[random_tile] = new DominoTile(domino_tiles[random_tile].getLeftValue(),
+														domino_tiles[random_tile].getRightValue(), true	);
 				counter++;
 				return true;
 			}
-		
-		return false;
-
+			return false;
+	
+		}
+		return true;
 	}
 	
 	
@@ -83,8 +102,7 @@ public class DominoTable
 		}
 		return false;
 	}
-	
-	
+
 	
 	
 	

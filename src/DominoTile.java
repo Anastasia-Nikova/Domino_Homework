@@ -3,6 +3,8 @@ public class DominoTile
 {
 	private int left_value ;
 	private int right_value ;
+	private boolean isCheck;
+	 
 	public static final int Max_Tile_Value = 6;
 	public static final int Min_Tile_Value = 0;
 	
@@ -15,6 +17,13 @@ public class DominoTile
 	{
 		setLeftValue(left_value);
 		setRightValue(right_value);
+	}
+	
+	public DominoTile(int left_value, int right_value, boolean isCheck )
+	{
+		setLeftValue(left_value);
+		setRightValue(right_value);
+		this.isCheck = isCheck;
 	}
 	
 	private void setLeftValue (int left_value)
@@ -31,6 +40,11 @@ public class DominoTile
 		{
 			this.right_value = right_value;
 		}
+	}
+	
+	public boolean getIsCheck()
+	{
+		return isCheck;
 	}
 	
 	public int getLeftValue()
