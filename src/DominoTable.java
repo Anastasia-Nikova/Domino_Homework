@@ -31,8 +31,8 @@ public class DominoTable
 						domino_table[i+1] = domino_table[i];
 					}
 					domino_table[0] = domino; 
+					listener.onTableChanged(this);
 					return true;
-					//listener.onTableChanged();
 				}
 			}
 			else if  ( domino_table[0].getLeftValue() == domino.getRightValue())
@@ -44,9 +44,8 @@ public class DominoTable
 						domino_table[i+1] = domino_table[i];
 					}
 					domino_table[0] = domino;
+					listener.onTableChanged(this);
 					return true;
-					//listener.onTableChanged();
-
 				}
 			}
 			return false;
@@ -72,7 +71,7 @@ public class DominoTable
 						domino_table[i] = domino;
 						return true;
 					}
-					//listener.onTableChanged();
+					listener.onTableChanged(this);
 				}
 				return false;
 			}
