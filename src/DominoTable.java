@@ -8,6 +8,7 @@ public class DominoTable
 	public DominoTable()
 	{
 		domino_table = new DominoTile[Domino_Tile_Max_Counter];
+		
 	}
 	
 	public boolean addLeft(DominoTile domino)
@@ -26,7 +27,7 @@ public class DominoTable
 				//if(listener != null)
 				//{
 					domino.swapValues();
-					for( int i = 0; i < domino_table.length; i++) 
+					for( int i = 0; i < domino_table.length-1; i++ ) 
 					{                
 						domino_table[i+1] = domino_table[i];
 					}
@@ -39,7 +40,7 @@ public class DominoTable
 			{
 				//if(listener != null)
 				//{
-					for( int i = 0; i < domino_table.length; i++ ) 
+					for( int i = 0; i < domino_table.length-1; i++ ) 
 					{                
 						domino_table[i+1] = domino_table[i];
 					}
@@ -78,18 +79,7 @@ public class DominoTable
 		} return false;
 	}
 
-//	public StringBuilder getTableTale()
-//	{
-//		StringBuilder sb = new StringBuilder();
-//		for (int i = 0; i < domino_table.length; i++)
-//		{
-//			if(domino_table[i] != null)
-//			{
-//				sb.append("[" + domino_table[i].getLeftValue() + "|" + domino_table[i].getRightValue() + "]");
-//			}
-//		}
-//		return sb;
-//	}
+
 	
 //	public void addTableEventListener(TableEventListener listener)
 //	{

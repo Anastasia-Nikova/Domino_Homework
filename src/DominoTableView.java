@@ -11,8 +11,8 @@ import javax.swing.JComponent;
 public class DominoTableView extends JComponent
 {
 	private DominoTable table;
-	private final static Color BACKGROUND_COLOR = new Color(192,192,192);
-	private final static Color BOARD_LINES_COLOR = new Color(83,83,83);
+	private final static Color BACKGROUND_COLOR = new Color(192,192,192);//192
+	private final static Color BOARD_LINES_COLOR = new Color(84,84,84);
 	
 	public DominoTableView(Rectangle r,DominoTable table)
 	{
@@ -25,7 +25,7 @@ public class DominoTableView extends JComponent
 		
 		super.paintComponent(graphics);
 		Graphics2D g= (Graphics2D)graphics;
-
+		//setBounds(12,12,123,123);
 		g.setColor(BACKGROUND_COLOR);
 		g.fill((new Rectangle2D.Double(5, 5, getBounds().width-10, getBounds().height-8)));
 		g.setStroke(new BasicStroke(5));
@@ -43,19 +43,21 @@ public class DominoTableView extends JComponent
 	private void drawTiles(Graphics graphics)
 	{
 		Graphics2D g= (Graphics2D)graphics;
+		int smth = 51;
 		for(int i = 0; i < table.domino_table.length; i++)
 		{
 			if(table.domino_table[i] != null)
 			{
 				g.setColor(Color.WHITE);
-				g.fill(new Rectangle2D.Double(14+(i*60),14,50,25));
+				g.fill(new Rectangle2D.Double(14+smth,200,50,25));
 				g.setColor(Color.BLACK);
 				g.setStroke(new BasicStroke(1));
-				g.draw(new Rectangle2D.Double(14+(i*60),14,50,25));
-				g.fill(new Rectangle2D.Double(39+(i*60),14,1,25));
-				String tileInfo = String.format("%d       %d",table.domino_table[i].getLeftValue() ,
+				g.draw(new Rectangle2D.Double(14+smth,200,50,25));
+				g.fill(new Rectangle2D.Double(39+smth,200,1,25));
+				String tileInfo = String.format("%d      %d",table.domino_table[i].getLeftValue() ,
 						table.domino_table[i].getRightValue());
-				g.drawString(tileInfo, 20 +(i*60), 30);
+				g.drawString(tileInfo, 21+smth,218);
+				smth += 50;
 			}
 		}
 	}
